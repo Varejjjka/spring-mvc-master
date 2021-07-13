@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +13,12 @@ import web.servise.CarServise;
 @RequestMapping("/cars")
 
 public class CarsController {
+    @Autowired
+    CarServise carServise;
 
     @GetMapping()
     public String printCars(@RequestParam(value = "count", required = false) int count, ModelMap modelMap) {
-        modelMap.addAttribute("carList", CarServise.getCars(count));
+        modelMap.addAttribute("carList", carServise.getCars(count));
         return "cars";
     }
 }

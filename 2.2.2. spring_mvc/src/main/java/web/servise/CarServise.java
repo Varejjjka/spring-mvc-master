@@ -1,12 +1,14 @@
 package web.servise;
 
+import org.springframework.stereotype.Component;
 import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CarServise {
-    public static List<Car> getCars (int count) {
+    public List<Car> getCars(int count) {
         List<Car> carList = new ArrayList<>();
         carList.add(new Car("Mini Countryman", "111", "BMW"));
         carList.add(new Car("Smart", "222", "Mercedes"));
@@ -17,6 +19,6 @@ public class CarServise {
         if (count > 5) {
             count = 5;
         }
-       return carList.subList(0, count);
+        return carList.subList(0, count);
     }
 }
